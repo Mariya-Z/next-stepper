@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'next-stepper-lib-app';
+  public thirdDisabled = false;
+
+  public onClick(): void {
+    this.thirdDisabled = !this.thirdDisabled;
+  }
 }

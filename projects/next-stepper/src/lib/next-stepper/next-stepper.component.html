@@ -1,3 +1,18 @@
-<p>
-  next-stepper works!
-</p>
+<article class="next-stepper">
+  <section class="next-stepper__step"
+          [class.checked]="firstChecked"
+          [class.disabled]="firstDisabled">
+    <span>{{firstStep}}</span>
+  </section>
+  <section class="next-stepper__step"
+          [class.checked]="secondCecked"
+          [class.disabled]="secondDisabled">
+    <span>{{secondStep}}</span>
+  </section>
+  <section class="next-stepper__step"
+          [class.checked]="thirdChecked"
+          [class.disabled]="thirdDisabled">
+    <span>{{thirdStep}}</span>
+  </section>
+  <p *ngIf="thirdDisabled">thirdDisabled</p>
+</article>

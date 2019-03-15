@@ -1,1 +1,8 @@
-<next-stepper></next-stepper>
+<next-stepper
+  [firstStep]="'firstStep'"
+  [secondStep]="'secondStep'"
+  [thirdStep]="'thirdStep'"
+  [thirdDisabled]="thirdDisabled"
+></next-stepper>
+
+<button (click)="onClick()">show</button>
