@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "next-stepper": [
+        "dist/next-stepper"
+      ],
+      "next-stepper/*": [
+        "dist/next-stepper/*"
+      ]
+    }
   }
 }
