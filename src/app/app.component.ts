@@ -6,9 +6,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public thirdDisabled = false;
+  public firstChecked = true;
+  public firstDisabled = false;
+  public secondChecked = false;
+  public secondDisabled = true;
+  public thirdChecked = false;
+  public thirdDisabled = true;
 
   public onClick(): void {
-    this.thirdDisabled = !this.thirdDisabled;
+    if (this.firstChecked) {
+      this.firstChecked = !this.firstChecked;
+      this.secondChecked = !this.secondChecked;
+      this.secondDisabled = !this.secondDisabled;
+    } else if (this.secondChecked) {
+      this.secondChecked = !this.secondChecked;
+      this.thirdChecked = !this.thirdChecked;
+      this.thirdDisabled = !this.thirdDisabled;
+    } else {
+      this.firstChecked = true;
+      this.firstDisabled = false;
+      this.secondChecked = false;
+      this.secondDisabled = true;
+      this.thirdChecked = false;
+      this.thirdDisabled = true;
+    }
   }
 }

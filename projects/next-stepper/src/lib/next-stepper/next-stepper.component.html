@@ -1,18 +1,21 @@
 <article class="next-stepper">
   <section class="next-stepper__step"
           [class.checked]="firstChecked"
+          [class.active]="!firstDisabled"
           [class.disabled]="firstDisabled">
-    <span>{{firstStep}}</span>
+    <span class=step-title>{{ firstStep }}</span>
   </section>
   <section class="next-stepper__step"
-          [class.checked]="secondCecked"
+          [class.checked]="secondChecked"
+          [class.active]="!secondDisabled"
           [class.disabled]="secondDisabled">
-    <span>{{secondStep}}</span>
+    <span class=step-title>{{ secondStep }}</span>
   </section>
   <section class="next-stepper__step"
           [class.checked]="thirdChecked"
+          [class.active]="!thirdDisabled"
           [class.disabled]="thirdDisabled">
-    <span>{{thirdStep}}</span>
+    <span class=step-title>{{ thirdStep }}</span>
   </section>
-  <p *ngIf="thirdDisabled">thirdDisabled</p>
+  <!-- <p *ngIf="thirdDisabled">thirdDisabled</p> -->
 </article>

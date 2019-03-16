@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [NextStepperComponent],
-  imports: [ CommonModule
-  ],
-  exports: [NextStepperComponent]
+  imports: [CommonModule],
+  exports: [NextStepperComponent],
+  entryComponents: [NextStepperComponent],
 })
 export class NextStepperModule { }
