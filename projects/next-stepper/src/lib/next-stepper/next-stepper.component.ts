@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 // import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './next-stepper.component.html',
   styleUrls: ['./next-stepper.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
 export class NextStepperComponent {
   @Input() public firstStep: string;
@@ -18,6 +17,4 @@ export class NextStepperComponent {
   @Input() public thirdStep: string;
   @Input() public thirdChecked: boolean;
   @Input() public thirdDisabled: boolean;
-
-
 }
