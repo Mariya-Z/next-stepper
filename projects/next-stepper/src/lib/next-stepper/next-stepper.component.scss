@@ -1,38 +1,37 @@
-$blue-light: #5291DD;
-$gray-medium: #C6C6C6;
+$blue-light: #5291dd;
+$gray-medium: #c6c6c6;
 $blue-dark: #023761;
-$blue: #0460A9;
+$blue: #0460a9;
 $white: #fff;
 
 .next-stepper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 36px;
+  flex: 1;
+
+  &__step {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: stretch;
-    height: 36px;
+    align-items: center;
+    margin: 0 auto;
     flex: 1;
-
-    &__step {
-        display: flex;
-        align-items: center;
-        margin: 0 auto;
-        flex: 1;
-    }
-
+  }
 }
 
 .step-title {
-    color: $white;
+  color: $white;
 }
 
 .disabled {
-    background-color: $gray-medium;
+  background-color: $gray-medium;
 }
 
 .active {
-    background-color: $blue-light;
+  background-color: $blue-light;
 }
 
 .checked {
-    background-color: $blue;
+  background-color: $blue;
 }

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { NextStepperComponent } from './next-stepper/next-stepper.component';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {NextStepperComponent} from './next-stepper/next-stepper.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [NextStepperComponent],
@@ -8,4 +8,4 @@ import { CommonModule } from '@angular/common';
   exports: [NextStepperComponent],
   entryComponents: [NextStepperComponent],
 })
-export class NextStepperModule { }
+export class NextStepperModule {}
