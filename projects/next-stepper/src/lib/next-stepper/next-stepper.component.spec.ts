@@ -1,20 +1,22 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NextStepperComponent} from './next-stepper.component';
-import {Component, NO_ERRORS_SCHEMA} from '@angular/core';
+import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 describe('NextStepperComponent', () => {
   let component: NextStepperComponent;
   let fixture: ComponentFixture<NextStepperComponent>;
+  let hostFixture: ComponentFixture<NextStepperHostComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NextStepperComponent],
+      declarations: [NextStepperComponent, NextStepperHostComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
+    hostFixture = TestBed.createComponent(NextStepperHostComponent);
     fixture = TestBed.createComponent(NextStepperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -23,31 +25,32 @@ describe('NextStepperComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
-
-describe('NextStepperHostComponent', () => {
-  let component: NextStepperHostComponent;
-  let fixture: ComponentFixture<NextStepperHostComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [NextStepperHostComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NextStepperHostComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should show step names', () => {
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      const de = fixture.debugElement.query(By.css('.next-stepper'));
-      console.log(de.nativeElement);
-      expect(de.nativeElement.textContent).toBe('firstStep');
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      let element = hostFixture.debugElement.query(By.css('.first-step .step-title'));
+      expect(element.nativeElement.textContent).toBe('firstStep');
+
+      element = hostFixture.debugElement.query(By.css('.second-step .step-title'));
+      expect(element.nativeElement.textContent).toBe('secondStep');
+
+      element = hostFixture.debugElement.query(By.css('.third-step .step-title'));
+      expect(element.nativeElement.textContent).toBe('thirdStep');
+    });
+  });
+
+  it('should set necessary classes', () => {
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      let element = hostFixture.debugElement.query(By.css('.first-step'));
+      expect(element.nativeElement.className).toContain('checked', 'active');
+
+      element = hostFixture.debugElement.query(By.css('.second-step'));
+      expect(element.nativeElement.className).toContain('disabled');
+
+      element = hostFixture.debugElement.query(By.css('.third-step'));
+      expect(element.nativeElement.className).toContain('disabled');
     });
   });
 });

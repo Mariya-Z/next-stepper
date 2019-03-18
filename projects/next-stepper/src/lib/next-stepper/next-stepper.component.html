@@ -1,14 +1,14 @@
 <article class="next-stepper">
   <section
-    class="next-stepper__step"
+    class="next-stepper__step first-step"
     [class.checked]="firstChecked"
     [class.active]="!firstDisabled"
     [class.disabled]="firstDisabled"
   >
-    <span class="step-title first-title">{{ firstStep }}</span>
+    <span class="step-title">{{ firstStep }}</span>
   </section>
   <section
-    class="next-stepper__step"
+    class="next-stepper__step second-step"
     [class.checked]="secondChecked"
     [class.active]="!secondDisabled"
     [class.disabled]="secondDisabled"
@@ -16,7 +16,7 @@
     <span class="step-title">{{ secondStep }}</span>
   </section>
   <section
-    class="next-stepper__step"
+    class="next-stepper__step third-step"
     [class.checked]="thirdChecked"
     [class.active]="!thirdDisabled"
     [class.disabled]="thirdDisabled"
