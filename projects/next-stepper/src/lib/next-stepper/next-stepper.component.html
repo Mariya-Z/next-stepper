@@ -1,26 +1,30 @@
 <article class="next-stepper">
   <section
     class="next-stepper__step first-step"
-    [class.checked]="firstChecked"
-    [class.active]="!firstDisabled"
-    [class.disabled]="firstDisabled"
+    [class.checked]="checkedSteps[0]"
+    [class.active]="!disabledSteps[0]"
+    [class.disabled]="disabledSteps[0]"
+    (click)="onClick(0)"
   >
     <span class="step-title">{{ firstStep }}</span>
   </section>
   <section
     class="next-stepper__step second-step"
-    [class.checked]="secondChecked"
-    [class.active]="!secondDisabled"
-    [class.disabled]="secondDisabled"
+    [class.checked]="checkedSteps[1]"
+    [class.active]="!disabledSteps[1]"
+    [class.disabled]="disabledSteps[1]"
+    (click)="onClick(1)"
   >
     <span class="step-title">{{ secondStep }}</span>
   </section>
   <section
     class="next-stepper__step third-step"
-    [class.checked]="thirdChecked"
-    [class.active]="!thirdDisabled"
-    [class.disabled]="thirdDisabled"
+    [class.checked]="checkedSteps[2]"
+    [class.active]="!disabledSteps[2]"
+    [class.disabled]="disabledSteps[2]"
+    (click)="onClick(2)"
   >
     <span class="step-title">{{ thirdStep }}</span>
   </section>
 </article>
+<button (click)="next()">next</button>

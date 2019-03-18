@@ -59,22 +59,9 @@ describe('NextStepperComponent', () => {
   template: `
     <next-stepper
       [firstStep]="'firstStep'"
-      [firstChecked]="firstChecked"
-      [firstDisabled]="firstDisabled"
       [secondStep]="'secondStep'"
-      [secondChecked]="secondChecked"
-      [secondDisabled]="secondDisabled"
       [thirdStep]="'thirdStep'"
-      [thirdChecked]="thirdChecked"
-      [thirdDisabled]="thirdDisabled"
     ></next-stepper>
   `,
 })
-class NextStepperHostComponent {
-  public firstChecked = true;
-  public firstDisabled = false;
-  public secondChecked = false;
-  public secondDisabled = true;
-  public thirdChecked = false;
-  public thirdDisabled = true;
-}
+class NextStepperHostComponent {}
