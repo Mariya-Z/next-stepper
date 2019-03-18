@@ -5,9 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build_lib": "ng build next-stepper",
     "test": "ng test",
+    "test_lib": "ng test next-stepper",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "npm_pack": "cd dist/next-stepper && npm pack && cd ../..",
+    "npm_package": "npm run build_lib && npm run npm_pack &&  npm i file:dist/next-stepper/next-stepper-0.0.1.tgz --no-save",
+    "postinstall": "npm run npm_package",
+    "bump": "cd projects/next-stepper && yarn version --patch",
+    "package": "yarn bump && yarn build_lid && yarn npm_pack"
   },
   "private": true,
   "dependencies": {
