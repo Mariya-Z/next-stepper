@@ -21,18 +21,64 @@ $white: #fff;
 }
 
 .step-title {
-  color: $white;
+  // color: $white;
 }
 
 .disabled {
-  background-color: $gray-medium;
+  // background-color: $gray-medium;
 }
 
 .active {
-  background-color: $blue-light;
+  // background-color: $blue-light;
   cursor: pointer;
 }
 
 .checked {
-  background-color: $blue;
+  // background-color: $blue;
 }
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  // left: 0;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+
+  border-left: 18px solid pink;
+}
+
+.arrow {
+  z-index: -1;
+  // width: 0;
+  height: 0;
+  border-top: 18px solid rgb(212, 255, 192);
+  border-bottom: 18px solid rgb(212, 255, 192);
+  border-left: 18px solid transparent;
+  // flex: 1;
+}
+.arrow:after {
+  content: '';
+  height: 0;
+  width: 0;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  // position: absolute;
+  // left: 86%;
+  border-left: 18px solid rgb(212, 255, 192);
+  position: absolute;
+  margin-left: -20px;
+}
+
+// .arrow-left {
+//   width: 0;
+//   height: 0;
+//   border-top: 10px solid transparent;
+//   border-bottom: 10px solid transparent;
+
+//   border-right:10px solid blue;
+// }
+
+// .b {
+//   padding-left: 10px;
+//   z-index: 2;
+// }
