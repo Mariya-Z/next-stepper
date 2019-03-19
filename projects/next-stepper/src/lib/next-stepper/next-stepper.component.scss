@@ -1,6 +1,5 @@
 $blue-light: #5291dd;
 $gray-medium: #c6c6c6;
-$blue-dark: #023761;
 $blue: #0460a9;
 $white: #fff;
 
@@ -13,19 +12,56 @@ $white: #fff;
   flex: 1;
 
   &__step {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
+    text-align: center;
+    padding: 10px 10px 10px 30px;
+    min-width: 100px;
+    position: relative;
+    background-color: $gray-medium;
     flex: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  &__step:before,
+  &__step:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -16px;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 18px solid $gray-medium;
+    z-index: 2;
+  }
+
+  &__step:before {
+    right: auto;
+    left: 0;
+    border-left: 18px solid $white;
+    z-index: 0;
+  }
+
+  &__step.active:after {
+    border-left: 18px solid $blue-light;    
+  }
+
+  &__step.checked:after {
+    border-left: 18px solid $blue;    
+  }
+
+  &__step:first-child:before {
+    border: none;
+  }
+
+  &__step:last-child:after {
+    border: none;
   }
 }
 
 .step-title {
   color: $white;
-}
-
-.disabled {
-  background-color: $gray-medium;
 }
 
 .active {
