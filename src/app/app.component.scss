@@ -1,0 +1,15 @@
+$white: #fff;
+$blue: #0460a9;
+
+.submit-btn {
+  background-color: $blue;
+  border: none;
+  color: $white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 20px 0;
+  font-size: 16px;
+  cursor: pointer;
+}
