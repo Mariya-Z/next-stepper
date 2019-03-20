@@ -8,9 +8,6 @@ import {ViewChild, Component, Input} from '@angular/core';
 
 const styles = `
   <style>
-    body \{
-      margin: 0;
-    \}
     .submit-btn \{
       background-color: #0460a9;
       border: none;
