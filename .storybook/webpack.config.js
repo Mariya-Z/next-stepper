@@ -1,5 +1,5 @@
-module.exports = ({config, configType}) => {
-    config.output.path = configType === 'PRODUCTION' ? '/next-stepper/' : '/';
+module.exports = ({config, mode}) => {
+    config.output.publicPath = mode === 'PRODUCTION' ? '/next-stepper/' : '/';
     return config;
   };
   
