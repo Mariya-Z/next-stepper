@@ -7,7 +7,6 @@ import {NextStepperModule} from 'next-stepper';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, NextStepperModule],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
