@@ -17,44 +17,36 @@ export class NextStepperComponent implements OnInit {
   @Input() public steps: Step[] = [];
 
   public activeSteps = [];
-  public disabledSteps;
-
-  public get passiveSteps(): boolean[] {
-    this.disabledSteps.forEach((v, i) => (this.passiveSteps[i] = !this.disabledSteps[i]));
-    return this.passiveSteps;
-  }
+  public passiveSteps = [];
 
   @Input() private checked: number;
 
   public ngOnInit(): void {
     this.activeSteps = this.steps.map(() => false);
-    this.disabledSteps = this.steps.map(() => true);
+    this.passiveSteps = this.steps.map((item) => item.allowTransition);
     if (this.checked >= 0) {
       this.activeSteps[this.checked] = true;
-      for (let i = 0; i <= this.checked; ++i) {
-        this.disabledSteps[i] = false;
-      }
+      this.passiveSteps[this.checked] = true;
     } else {
       this.activeSteps[0] = true;
-      this.disabledSteps[0] = false;
+      this.passiveSteps[0] = true;
     }
   }
 
   public onClick(i: number): void {
-    if (this.disabledSteps[i] === false) {
-      this.activeSteps.forEach((v, j) => {
-        this.activeSteps[j] = false;
-      });
+    if (this.passiveSteps[i]) {
+      const j = this.activeSteps.indexOf(true);
+      this.activeSteps[j] = false;
       this.activeSteps[i] = true;
     }
   }
 
   public next(): void {
     const i = this.activeSteps.indexOf(true);
-    if (i < this.steps.length) {
+    if (i < this.steps.length - 1) {
       this.activeSteps[i] = false;
       this.activeSteps[i + 1] = true;
-      this.disabledSteps[i + 1] = false;
+      this.passiveSteps[i + 1] = true;
     }
   }
 }

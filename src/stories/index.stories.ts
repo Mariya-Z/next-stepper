@@ -6,6 +6,13 @@ import checkedText from './checked.md';
 import {NextStepperComponent} from '../../projects/next-stepper/src/public_api';
 import {ViewChild, Component, Input} from '@angular/core';
 
+export const steps = [
+  {id: '1', name: 'firstStep', allowTransition: true},
+  {id: '3', name: 'secondStep', allowTransition: true},
+  {id: '2', name: 'thirdStep', allowTransition: false},
+  {id: '4', name: 'fouthStep', allowTransition: true},
+];
+
 const styles = `
   <style>
     .submit-btn \{
@@ -22,14 +29,13 @@ const styles = `
     \}
   </style>
 `;
+
 @Component({
   selector: 'stepper',
   template: `
     ${styles}
     <next-stepper
-      [firstStep]="'firstStep'"
-      [secondStep]="'secondStep'"
-      [thirdStep]="'thirdStep'"
+      [steps]="steps"
       [checked]="checked"
     ></next-stepper>
     <button (click)="onClick()" class="submit-btn">Next step</button>
@@ -37,6 +43,12 @@ const styles = `
 })
 export class AppComponent {
   @ViewChild(NextStepperComponent) public stepper: NextStepperComponent;
+  public steps = [
+    {id: '1', name: 'firstStep', allowTransition: false},
+    {id: '3', name: 'secondStep', allowTransition: true},
+    {id: '2', name: 'thirdStep', allowTransition: false},
+    {id: '4', name: 'fouthStep', allowTransition: true},
+  ];
   @Input() public checked: number;
   public onClick(): void {
     this.stepper.next();
@@ -60,7 +72,10 @@ storiesOf('Next stepper', module)
     'Using checked input',
     () => ({
       template: `
-      <stepper [checked]=1></stepper>
+      <stepper
+        [checked]=1
+      >
+      </stepper>
     `,
     }),
     {notes: checkedText},
