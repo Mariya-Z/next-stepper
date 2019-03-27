@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { NextStepperComponent } from 'next-stepper';
+import {NextStepperComponent} from 'next-stepper';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,6 @@ export class AppComponent {
   @ViewChild(NextStepperComponent) public stepper: NextStepperComponent;
 
   public onClick(): void {
-    // this.stepper.next();
+    this.stepper.next();
   }
 }

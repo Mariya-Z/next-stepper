@@ -1,30 +1,12 @@
 <article class="next-stepper">
-  <section *ngFor="let step of steps; let i = index"
+  <section
+    *ngFor="let step of steps; let i = index"
     class="next-stepper__step"
-    [class.checked]="checkedSteps[i]"
+    [class.checked]="activeSteps[i]"
+    [class.active]="!disabledSteps[i]"
+    [class.disabled]="disabledSteps[i]"
     (click)="onClick(i)"
   >
-  <!-- 
-  [class.active]="!disabledSteps[i]"
-  [class.disabled]="disabledSteps[i]" -->
     <span class="step-title">{{ steps[i].name }}</span>
   </section>
-  <!-- <section
-    class="next-stepper__step second-step"
-    [class.checked]="checkedSteps[1]"
-    [class.active]="!disabledSteps[1]"
-    [class.disabled]="disabledSteps[1]"
-    (click)="onClick(1)"
-  >
-    <span class="step-title">{{ secondStep }}</span>
-  </section>
-  <section
-    class="next-stepper__step third-step"
-    [class.checked]="checkedSteps[2]"
-    [class.active]="!disabledSteps[2]"
-    [class.disabled]="disabledSteps[2]"
-    (click)="onClick(2)"
-  >
-    <span class="step-title">{{ thirdStep }}</span>
-  </section> -->
 </article>
