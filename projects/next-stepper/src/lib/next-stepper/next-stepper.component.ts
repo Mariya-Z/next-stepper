@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-// import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 interface Step {
   id: string;
@@ -11,22 +10,22 @@ interface Step {
   selector: 'next-stepper',
   templateUrl: './next-stepper.component.html',
   styleUrls: ['./next-stepper.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NextStepperComponent implements OnInit {
-  @Input() public steps: Step[] = [];
+  @Input() public steps: Step[];
+  @Input() public changePassiveSteps = true;
 
   public activeSteps = [];
   public passiveSteps = [];
 
-  @Input() private checked: number;
+  @Input() private active: number = 0;
 
   public ngOnInit(): void {
     this.activeSteps = this.steps.map(() => false);
     this.passiveSteps = this.steps.map((item) => item.allowTransition);
-    if (this.checked >= 0) {
-      this.activeSteps[this.checked] = true;
-      this.passiveSteps[this.checked] = true;
+    if (this.active >= 0) {
+      this.activeSteps[this.active] = true;
+      this.passiveSteps[this.active] = true;
     } else {
       this.activeSteps[0] = true;
       this.passiveSteps[0] = true;
@@ -46,7 +45,9 @@ export class NextStepperComponent implements OnInit {
     if (i < this.steps.length - 1) {
       this.activeSteps[i] = false;
       this.activeSteps[i + 1] = true;
-      this.passiveSteps[i + 1] = true;
+      if (this.changePassiveSteps) {
+        this.passiveSteps[i + 1] = true;
+      }
     }
   }
 }
