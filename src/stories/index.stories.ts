@@ -3,6 +3,8 @@ import {storiesOf, moduleMetadata} from '@storybook/angular';
 import defaultText from './default.md';
 import transitionText from './transition.md';
 import checkedText from './checked.md';
+import passiveText from './passive.md';
+import disabledText from './disabled.md';
 
 import {NextStepperComponent} from '../../projects/next-stepper/src/public_api';
 import {ViewChild, Component, Input} from '@angular/core';
@@ -143,10 +145,10 @@ storiesOf('Next stepper', module)
       `,
       props: {stepsWithTransition},
     }),
-    {notes: checkedText},
+    {notes: passiveText},
   )
   .add(
-    'With dsable next btn for passive steps',
+    'With disable next button for passive steps',
     () => ({
       template: `
       <stepper
@@ -158,5 +160,5 @@ storiesOf('Next stepper', module)
       `,
       props: {disabledSteps},
     }),
-    {notes: checkedText},
+    {notes: disabledText},
   );

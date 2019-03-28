@@ -56,7 +56,7 @@ Component has function `next()` that lets move on next step. Decorator @ViewChil
 export class AppComponent {
     @ViewChild(NextStepperComponent) public stepper: NextStepperComponent;
     ...
-    newFunc() {
+    public onClick(): void {
         this.stepper.next();
     }
 }
