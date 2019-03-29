@@ -1,4 +1,4 @@
-## Using changePassiveSteps input
+## Make next button disabled
 
 When `changePassiveSteps` is true (false by default), visited steps don't become passive after visit 
 
