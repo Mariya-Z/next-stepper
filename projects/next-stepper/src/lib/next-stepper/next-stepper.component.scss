@@ -47,7 +47,7 @@ $white: #fff;
     border-left: 18px solid $blue-light;    
   }
 
-  &__step.checked:after {
+  &__step.active:after {
     border-left: 18px solid $blue;    
   }
 
@@ -69,7 +69,7 @@ $white: #fff;
   cursor: pointer;
 }
 
-.checked {
+.active {
   background-color: $blue;
   cursor: default;
 }

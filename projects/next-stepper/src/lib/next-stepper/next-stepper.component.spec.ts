@@ -40,13 +40,22 @@ describe('NextStepperComponent', () => {
     hostFixture.detectChanges();
     hostFixture.whenStable().then(() => {
       const elements = hostFixture.debugElement.queryAll(By.css('.next-stepper__step'));
-      expect(elements[0].nativeElement.className).toContain('checked', 'active');
+      expect(elements[0].nativeElement.className).toContain('active');
 
       expect(elements[1].nativeElement.className).toContain('passive');
 
       expect(elements[2].nativeElement.className).toContain('disabled');
 
       expect(elements[3].nativeElement.className).toContain('passive');
+    });
+  });
+
+  it('should move on step by click', () => {
+    component.next();
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      const element = hostFixture.debugElement.query(By.css('.active'));
+      expect(element.properties.id).toBe('1');
     });
   });
 });
