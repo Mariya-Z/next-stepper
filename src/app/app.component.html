@@ -1,9 +1,8 @@
 <next-stepper
-  [firstStep]="'firstStep'"
-  [secondStep]="'secondStep'"
-  [thirdStep]="'thirdStep'"
-  [checked]="checked"
+  [steps]="steps"
+  [changePassiveSteps]="false"
+  [active]="checked"
 ></next-stepper>
 <div>
-  <button (click)="onClick()" class="submit-btn">Next step</button>
+  <button (click)="onClick()" class="submit-btn" [disabled]="isDisabled()">Next step</button>
 </div>

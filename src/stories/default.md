@@ -28,23 +28,35 @@ export class AppModule {}
 <next-stepper>
 </next-stepper>
 ```
-Stepper displays progress through a sequence of steps. It has three steps. Each step can be in one of three state `checked` (blue background) it's current step. `active` (light blue background) is step that has been visited before. And `disabled` (gray backgroud) is step that can be visited after fullfil some conditions. User is able to move between active and cheched steps by click on their names
+Stepper displays progress through a sequence of steps. Steps are passed through input. Each step can be in one of three state `active` (blue background) it's current step. `passive` (light blue background) is step that can be visited by click. And `disabled` (gray backgroud) is step that can't be visited by click in most cases it can be visited after fullfil some conditions (here by click on next button). User is able to move between active and passive steps by click on their names
 
-It has three inputs that let set names for steps:
+It has three inputs that let set steps and optional parametrs:
 
-- `firstStep`
-- `secondStep`
-- `thirdStep`
+- `steps`
+- `changePassiveSteps`
+- `active`
 
-Also component has optional input `checked` that points on active step. It's number form 0 to 2. By defaylt it's first step (0).
+`steps` is array of necessary steps, where each step has to look like this: 
 
-Component has function `next()` that lets move on next disabled step. Decorator @ViewChild is used to get this function 
+```
+  id: string;
+  name: string;
+  allowTransition: boolean;
+```
+
+`allowTransition` tells can user visit this step by click on it or not.
+
+`changePassiveSteps` is optional. By default it's true. Disabled step becomes passive after it has been visited  (light blue background). If input is false it won't become blue light
+
+`active` is also optional input, this is index of active step. It's number form 0 to steps array length. By default it's first step (0).
+
+Component has function `next()` that lets move on next step. Decorator @ViewChild is used to get this function in app
 
 ```
 export class AppComponent {
     @ViewChild(NextStepperComponent) public stepper: NextStepperComponent;
     ...
-    newFunc() {
+    public onClick(): void {
         this.stepper.next();
     }
 }
@@ -54,9 +66,17 @@ export class AppComponent {
 
 ```
 <next-stepper
-    [firstStep]="'firstStep'"
-    [secondStep]="'secondStep'"
-    [thirdStep]="'thirdStep'"
+  [steps]="steps"
 ></next-stepper>
 <button (click)="onClick()" class="submit-btn">Next step</button>
+```
+Where steps are described in component
+
+```
+steps = [
+  {id: '1', name: 'firstStep', allowTransition: true},
+  {id: '3', name: 'secondStep', allowTransition: false},
+  {id: '2', name: 'thirdStep', allowTransition: false},
+  {id: '4', name: 'fouthStep', allowTransition: false},
+]
 ```

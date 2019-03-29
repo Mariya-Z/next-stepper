@@ -1,6 +1,6 @@
-## Using checked input
+## Using changePassiveSteps input
 
-If checked step should be not first, it's can be defined de input parameter `active`
+When `changePassiveSteps` is true (false by default), visited steps don't become passive after visit 
 
 ### Tempalte for this example looks like code below
 
@@ -22,21 +22,20 @@ If checked step should be not first, it's can be defined de input parameter `act
 </style>
 
 <next-stepper
-    [steps]=stepsWithChecked
-    [checked]=2
+    [steps]=stepsWithTransition
+    [changePassiveSteps]=false
 ></next-stepper>
 <button (click)="onClick()" class="submit-btn">Next step</button>
 ```
 
-Where `stepsWithChecked` is
+Where `stepsWithTransition` is 
 
 ```
-
-stepsWithChecked = [
-  {id: '1', name: 'firstStep', allowTransition: false},
-  {id: '3', name: 'secondStep', allowTransition: true},
-  {id: '2', name: 'thirdStep', allowTransition: false},
+stepsWithTransition = [
+  {id: '1', name: 'firstStep', allowTransition: true},
+  {id: '3', name: 'secondStep', allowTransition: false},
+  {id: '2', name: 'thirdStep', allowTransition: true},
   {id: '4', name: 'fouthStep', allowTransition: false},
+  {id: '5', name: 'fifthStep', allowTransition: true},
 ];
-
 ```

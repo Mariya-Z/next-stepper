@@ -1,5 +1,6 @@
 $white: #fff;
 $blue: #0460a9;
+$gray-medium: #c6c6c6;
 
 .submit-btn {
   background-color: $blue;
@@ -12,4 +13,10 @@ $blue: #0460a9;
   margin: 20px 0;
   font-size: 16px;
   cursor: pointer;
+  user-select: none;
+
+  &:disabled {
+    background-color: $gray-medium;
+    cursor: default;
+  }
 }

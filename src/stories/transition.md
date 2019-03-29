@@ -1,6 +1,6 @@
-## Using checked input
+## Example of allowTransition values
 
-If checked step should be not first, it's can be defined de input parameter `active`
+If step can be visited just by ckick on it name, `allowTransition` should be true
 
 ### Tempalte for this example looks like code below
 
@@ -22,21 +22,20 @@ If checked step should be not first, it's can be defined de input parameter `act
 </style>
 
 <next-stepper
-    [steps]=stepsWithChecked
-    [checked]=2
+    [steps]=stepsWithTransition
 ></next-stepper>
 <button (click)="onClick()" class="submit-btn">Next step</button>
 ```
 
-Where `stepsWithChecked` is
+Where `stepsWithTransition` is 
 
 ```
 
-stepsWithChecked = [
-  {id: '1', name: 'firstStep', allowTransition: false},
-  {id: '3', name: 'secondStep', allowTransition: true},
-  {id: '2', name: 'thirdStep', allowTransition: false},
+stepsWithTransition = [
+  {id: '1', name: 'firstStep', allowTransition: true},
+  {id: '3', name: 'secondStep', allowTransition: false},
+  {id: '2', name: 'thirdStep', allowTransition: true},
   {id: '4', name: 'fouthStep', allowTransition: false},
+  {id: '5', name: 'fifthStep', allowTransition: true},
 ];
-
 ```
