@@ -43,7 +43,7 @@ $white: #fff;
     z-index: 0;
   }
 
-  &__step.active:after {
+  &__step.passive:after {
     border-left: 18px solid $blue-light;    
   }
 
@@ -64,7 +64,7 @@ $white: #fff;
   color: $white;
 }
 
-.active {
+.passive {
   background-color: $blue-light;
   cursor: pointer;
 }

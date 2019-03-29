@@ -12,7 +12,7 @@ interface Step {
   styleUrls: ['./next-stepper.component.scss'],
 })
 export class NextStepperComponent implements OnInit {
-  @Input() public steps: Step[];
+  @Input() public steps: Step[] = [];
   @Input() public changePassiveSteps = true;
 
   public activeSteps = [];
