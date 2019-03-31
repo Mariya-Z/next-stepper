@@ -6,6 +6,7 @@ import {By} from '@angular/platform-browser';
 
 describe('NextStepperComponent', () => {
   let component: NextStepperComponent;
+  let componentHost: NextStepperHostComponent;
   let fixture: ComponentFixture<NextStepperComponent>;
   let hostFixture: ComponentFixture<NextStepperHostComponent>;
 
@@ -19,6 +20,7 @@ describe('NextStepperComponent', () => {
     hostFixture = TestBed.createComponent(NextStepperHostComponent);
     fixture = TestBed.createComponent(NextStepperComponent);
     component = fixture.componentInstance;
+    componentHost = hostFixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -50,7 +52,7 @@ describe('NextStepperComponent', () => {
     });
   });
 
-  it('should move on step by click', () => {
+  it('should move on step by click on next', () => {
     component.next();
     hostFixture.detectChanges();
     hostFixture.whenStable().then(() => {
@@ -58,14 +60,27 @@ describe('NextStepperComponent', () => {
       expect(element.properties.id).toBe('1');
     });
   });
-});
+
+  it('should move on step by click on step name', () => {
+    componentHost.onClick(3);
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {});
+      // const element = hostFixture.debugElement.query(By.css('.active'));
+      // expect(element.properties.id).toBe('1');
+      // console.log(componentHost.activeSteps);
+      // console.log(componentHost.passiveSteps);
+      // expect(componentHost.activeSteps[0]).toBeFalsy();
+      // expect(componentHost.activeSteps[3]).toBeTruthy();
+    });
+  });
+
 
 @Component({
   template: `
     <next-stepper [steps]="steps"></next-stepper>
   `,
 })
-class NextStepperHostComponent {
+class NextStepperHostComponent extends NextStepperComponent {
   public steps = [
     {id: '1', name: 'firstStep', allowTransition: true},
     {id: '3', name: 'secondStep', allowTransition: true},
