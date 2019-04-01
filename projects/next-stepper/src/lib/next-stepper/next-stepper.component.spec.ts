@@ -6,6 +6,7 @@ import {By} from '@angular/platform-browser';
 
 describe('NextStepperComponent', () => {
   let component: NextStepperComponent;
+  let componentHost: NextStepperHostComponent;
   let fixture: ComponentFixture<NextStepperComponent>;
   let hostFixture: ComponentFixture<NextStepperHostComponent>;
 
@@ -19,6 +20,7 @@ describe('NextStepperComponent', () => {
     hostFixture = TestBed.createComponent(NextStepperHostComponent);
     fixture = TestBed.createComponent(NextStepperComponent);
     component = fixture.componentInstance;
+    componentHost = hostFixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -27,41 +29,64 @@ describe('NextStepperComponent', () => {
   });
 
   it('should show step names', () => {
+    const stepsNames = ['firstStep', 'secondStep', 'thirdStep', 'fouthStep'];
     hostFixture.detectChanges();
     hostFixture.whenStable().then(() => {
-      let element = hostFixture.debugElement.query(By.css('.first-step .step-title'));
-      expect(element.nativeElement.textContent).toBe('firstStep');
-
-      element = hostFixture.debugElement.query(By.css('.second-step .step-title'));
-      expect(element.nativeElement.textContent).toBe('secondStep');
-
-      element = hostFixture.debugElement.query(By.css('.third-step .step-title'));
-      expect(element.nativeElement.textContent).toBe('thirdStep');
+      const elements = hostFixture.debugElement.queryAll(By.css('.next-stepper__step'));
+      const textContents = elements.map((item) => item.nativeElement.textContent);
+      expect(textContents).toEqual(stepsNames);
     });
   });
 
   it('should set necessary classes', () => {
     hostFixture.detectChanges();
     hostFixture.whenStable().then(() => {
-      let element = hostFixture.debugElement.query(By.css('.first-step'));
-      expect(element.nativeElement.className).toContain('checked', 'active');
+      const elements = hostFixture.debugElement.queryAll(By.css('.next-stepper__step'));
+      expect(elements[0].nativeElement.className).toContain('passive');
 
-      element = hostFixture.debugElement.query(By.css('.second-step'));
-      expect(element.nativeElement.className).toContain('disabled');
+      expect(elements[1].nativeElement.className).toContain('active');
 
-      element = hostFixture.debugElement.query(By.css('.third-step'));
-      expect(element.nativeElement.className).toContain('disabled');
+      expect(elements[2].nativeElement.className).toContain('disabled');
+
+      expect(elements[3].nativeElement.className).toContain('passive');
+
+      expect(componentHost.activeSteps[1]).toBeTruthy();
+      expect(componentHost.passiveSteps[1]).toBeTruthy();
+    });
+  });
+
+  it('should move on step by click on next', () => {
+    hostFixture.detectChanges();
+    componentHost.next();
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      expect(componentHost.activeSteps[1]).toBeFalsy();
+      expect(componentHost.activeSteps[2]).toBeTruthy();
+    });
+  });
+
+  it('should move on step by click on step name', () => {
+    hostFixture.detectChanges();
+    componentHost.onClick(3);
+    hostFixture.detectChanges();
+    hostFixture.whenStable().then(() => {
+      expect(componentHost.activeSteps[1]).toBeFalsy();
+      expect(componentHost.activeSteps[3]).toBeTruthy();
     });
   });
 });
 
 @Component({
   template: `
-    <next-stepper
-      [firstStep]="'firstStep'"
-      [secondStep]="'secondStep'"
-      [thirdStep]="'thirdStep'"
-    ></next-stepper>
+    <next-stepper [steps]="steps" [active]="active"></next-stepper>
   `,
 })
-class NextStepperHostComponent {}
+class NextStepperHostComponent extends NextStepperComponent {
+  public active = 1;
+  public steps = [
+    {id: '1', name: 'firstStep', allowTransition: true},
+    {id: '2', name: 'secondStep', allowTransition: true},
+    {id: '3', name: 'thirdStep', allowTransition: false},
+    {id: '4', name: 'fouthStep', allowTransition: true},
+  ];
+}

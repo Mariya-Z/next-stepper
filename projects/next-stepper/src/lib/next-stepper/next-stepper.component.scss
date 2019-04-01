@@ -43,11 +43,11 @@ $white: #fff;
     z-index: 0;
   }
 
-  &__step.active:after {
+  &__step.passive:after {
     border-left: 18px solid $blue-light;    
   }
 
-  &__step.checked:after {
+  &__step.active:after {
     border-left: 18px solid $blue;    
   }
 
@@ -64,12 +64,12 @@ $white: #fff;
   color: $white;
 }
 
-.active {
+.passive {
   background-color: $blue-light;
   cursor: pointer;
 }
 
-.checked {
+.active {
   background-color: $blue;
   cursor: default;
 }

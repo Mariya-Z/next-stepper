@@ -3,8 +3,8 @@
     *ngFor="let step of steps; let i = index"
     [id]="step.id"
     class="next-stepper__step"
-    [class.checked]="activeSteps[i]"
-    [class.active]="passiveSteps[i]"
+    [class.active]="activeSteps[i]"
+    [class.passive]="passiveSteps[i]"
     [class.disabled]="!passiveSteps[i]"
     (click)="onClick(i)"
   >
