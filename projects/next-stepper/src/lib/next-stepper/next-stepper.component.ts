@@ -18,12 +18,12 @@ export class NextStepperComponent implements OnInit {
   public activeSteps = [];
   public passiveSteps = [];
 
-  @Input() private active: number = 0;
+  @Input() public active: number = 0;
 
   public ngOnInit(): void {
     this.activeSteps = this.steps.map(() => false);
     this.passiveSteps = this.steps.map((item) => item.allowTransition);
-    if (this.active >= 0) {
+    if (this.active > 0) {
       this.activeSteps[this.active] = true;
       this.passiveSteps[this.active] = true;
     } else {
